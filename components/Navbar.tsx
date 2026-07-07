@@ -27,7 +27,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
     >
       <div className="pl-8 pr-2 py-17 flex items-center justify-end gap-5 max-w-full mx-auto w-full relative">
         {/* Logo Section */}
-        <div className="fixed left-0 top-15 z-[61]">
+        <div className="fixed left-0 top-17 z-[61]">
           <Image
             src="https://res.cloudinary.com/dyromez82/image/upload/v1783281334/Artboard_25_300x_cgubub.png"
             alt="PSI Logo"
