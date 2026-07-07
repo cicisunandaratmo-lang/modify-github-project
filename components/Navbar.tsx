@@ -41,7 +41,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
         <div className="flex items-end gap-3 md:gap-6 flex-wrap">
           <button
             onClick={() => handleTabClick('beranda')}
-            className={`font-semibold text-xs md:text-sm whitespace-nowrap translate-y-4 ${
+            className={`font-semibold text-sm md:text-base whitespace-nowrap translate-y-6 ${
               activeTab === 'beranda'
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-gray-900 hover:text-red-600'
@@ -51,7 +51,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
           </button>
           <button
             onClick={() => handleTabClick('struktur-pengurus')}
-            className={`font-semibold text-xs md:text-sm whitespace-nowrap translate-y-4 ${
+            className={`font-semibold text-sm md:text-base whitespace-nowrap translate-y-6 ${
               activeTab === 'struktur-pengurus'
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-gray-900 hover:text-red-600'
@@ -61,7 +61,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
           </button>
           <button
             onClick={() => handleTabClick('agenda-absensi')}
-            className={`font-semibold text-xs md:text-sm whitespace-nowrap translate-y-4 ${
+            className={`font-semibold text-sm md:text-base whitespace-nowrap translate-y-6 ${
               activeTab === 'agenda-absensi'
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-gray-900 hover:text-red-600'
@@ -72,7 +72,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
         </div>
 
         {/* Search Icon */}
-        <button className="text-gray-900 hover:text-red-600 flex-shrink-0 translate-y-4">
+        <button className="text-gray-900 hover:text-red-600 flex-shrink-0 translate-y-6">
           <Search size={22} />
         </button>
       </div>
