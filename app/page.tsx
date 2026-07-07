@@ -1,23 +1,59 @@
-export default function Page() {
+'use client';
+
+import { useState } from 'react';
+import UtilityBar from '@/components/UtilityBar';
+import Navbar from '@/components/Navbar';
+import HeroBanner from '@/components/HeroBanner';
+import OrganizerGrid from '@/components/OrganizerGrid';
+import EventSection from '@/components/EventSection';
+import Footer from '@/components/Footer';
+import KTAModal from '@/components/KTAModal';
+import WhatsAppWidget from '@/components/WhatsAppWidget';
+
+type TabType = 'beranda' | 'struktur-pengurus' | 'agenda-absensi';
+
+export default function Home() {
+  const [activeTab, setActiveTab] = useState<TabType>('beranda');
+  const [selectedMember, setSelectedMember] = useState<any>(null);
+
   return (
-    <main className="relative flex min-h-screen items-center justify-center bg-[color:light-dark(#fff,#000)] text-[color:light-dark(#000,#fff)]">
-      <svg
-        aria-hidden="true"
-        className="size-20"
-        fill="none"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        strokeWidth="0.5"
-      >
-        <path
-          d="M14.2 14.2H17V6.9375C17 4.76288 15.2371 3 13.0625 3H5.8V5.8M14.2 14.2V7.79063L7.79062 14.2H14.2ZM14.2 14.2V17H6.9375C4.76288 17 3 15.2371 3 13.0625V5.8H5.8M5.8 5.8V12.2313L12.2313 5.8H5.8Z"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <p className="absolute left-1/2 top-[calc(50%+56px)] -translate-x-1/2 whitespace-nowrap text-sm font-medium text-muted-foreground">
-        Your v0 generation will show here.
-      </p>
-    </main>
-  )
+    <div className="h-screen overflow-hidden bg-white relative">
+      {/* Header - Floating (Does not take space) */}
+      <div className="absolute top-0 left-0 right-0 z-40 pointer-events-none">
+        <div className="pointer-events-auto">
+          <UtilityBar />
+          <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
+        </div>
+      </div>
+
+      {/* Content Area - Full viewport scrollable by tab */}
+      <main className="h-full overflow-y-auto">
+        {/* Beranda Tab */}
+        {activeTab === 'beranda' && (
+          <HeroBanner title="Tentang PSI" showDescription={true} />
+        )}
+
+        {/* Struktur Pengurus Tab */}
+        {activeTab === 'struktur-pengurus' && (
+          <OrganizerGrid onMemberClick={setSelectedMember} />
+        )}
+
+        {/* Agenda Absensi Tab */}
+        {activeTab === 'agenda-absensi' && (
+          <EventSection />
+        )}
+
+        {/* Footer */}
+        <Footer />
+      </main>
+
+      {/* KTA Modal */}
+      {selectedMember && (
+        <KTAModal member={selectedMember} onClose={() => setSelectedMember(null)} />
+      )}
+
+      {/* WhatsApp Widget */}
+      <WhatsAppWidget />
+    </div>
+  );
 }
