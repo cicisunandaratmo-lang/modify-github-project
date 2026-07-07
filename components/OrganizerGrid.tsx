@@ -14,7 +14,7 @@ export default function OrganizerGrid({ onMemberClick }: OrganizerGridProps) {
       <HeroBanner title="Anggota DPRt Mustikasari" />
       <section id="struktur-pengurus" className="pt-0 pb-8 md:pb-10 px-4 md:px-8 bg-transparent w-full">
       <div className="w-full bg-transparent">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 md:mb-12 uppercase">Struktur Pengurus Ranting</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 md:mb-12 uppercase mt-6">Struktur Pengurus Ranting</h2>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 w-full">
           {DATA_PENGURUS.map((member) => (

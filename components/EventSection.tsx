@@ -10,7 +10,7 @@ export default function EventSection() {
       <HeroBanner title="Agenda/Absensi" />
       <section id="agenda-absensi" className="pt-0 pb-8 md:pb-10 px-4 md:px-8 bg-transparent w-full">
       <div className="w-full bg-transparent">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 md:mb-12 uppercase">Agenda Kegiatan & Absensi Ranting</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 md:mb-12 uppercase mt-6">Agenda Kegiatan & Absensi Ranting</h2>
 
         {!SHOW_AGENDA_SECTION || EVENTS.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 md:py-16">
