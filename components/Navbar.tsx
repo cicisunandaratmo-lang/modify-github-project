@@ -19,13 +19,13 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible`}
+    <nav className={`fixed -top-2.5 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible`}
       style={{
         transform: `translateY(${translateY}%)`,
         pointerEvents: translateY < -95 ? 'none' : 'auto'
       }}
     >
-      <div className="pl-8 pr-2 py-17 flex items-center justify-end gap-5 max-w-full mx-auto w-full relative">
+      <div className="pl-8 pr-2 py-18 flex items-center justify-end gap-5 max-w-full mx-auto w-full relative">
         {/* Logo Section */}
         <div className="fixed left-0 top-15 z-[61]">
           <Image
