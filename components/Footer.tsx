@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-white">
+    <footer className="w-full bg-black text-white -mt-4">
       <div className="px-4 md:px-8 py-4 md:py-5 border-t border-gray-800">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left Side - Privacy Policy */}
