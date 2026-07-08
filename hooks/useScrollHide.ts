@@ -1,59 +1,57 @@
 import { useState, useEffect, useRef } from 'react';
 
 export function useScrollHide() {
-  const [isVisible, setIsVisible] = useState(true);
   const [translateY, setTranslateY] = useState(0);
   const containerRef = useRef<HTMLElement | null>(null);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastScrollRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Cari main element yang di-scroll
     const mainElement = document.querySelector('main');
-    if (!mainElement) {
-      return;
-    }
+    if (!mainElement) return;
 
     containerRef.current = mainElement;
+    const hideThreshold = 30;
 
     const handleScroll = () => {
       if (!containerRef.current) return;
       
-      const currentScrollY = containerRef.current.scrollTop;
-      const hideThreshold = 30;
-      
-      // Jika scroll kembali ke atas dengan cepat, langsung tampilkan navbar
-      if (currentScrollY < hideThreshold) {
-        setIsVisible(true);
-        setTranslateY(0);
-        lastScrollRef.current = currentScrollY;
-        return;
+      // Cancel previous RAF untuk avoid multiple updates
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
       }
       
-      // Clear previous timeout untuk menghindari banyak state update
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-      
-      // Use requestAnimationFrame untuk smooth scroll handling
-      scrollTimeoutRef.current = setTimeout(() => {
-        setIsVisible(false);
-        setTranslateY(-100);
+      // Gunakan RAF tanpa delay untuk responsive immediate update
+      rafRef.current = requestAnimationFrame(() => {
+        const currentScrollY = containerRef.current?.scrollTop || 0;
+        const lastScroll = lastScrollRef.current;
+        const isScrollingDown = currentScrollY > lastScroll;
+        
+        // Navbar visible jika scroll ke atas dari threshold
+        if (currentScrollY < hideThreshold) {
+          setTranslateY(0);
+        } 
+        // Navbar hidden jika scroll down
+        else if (isScrollingDown) {
+          setTranslateY(-100);
+        } 
+        // Navbar visible jika scroll up (lebih responsif)
+        else {
+          setTranslateY(0);
+        }
+        
         lastScrollRef.current = currentScrollY;
-      }, 50);
+      });
     };
 
-    // Call handler saat mount untuk set initial state
     handleScroll();
-
     mainElement.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => {
       mainElement.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
-  return { isVisible, translateY };
+  return translateY;
 }

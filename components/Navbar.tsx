@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { Search } from 'lucide-react';
+import { useScrollHide } from '@/hooks/useScrollHide';
 
 interface NavbarProps {
   activeTab?: string;
@@ -9,6 +10,8 @@ interface NavbarProps {
 }
 
 export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarProps) {
+  const translateY = useScrollHide();
+
   const handleTabClick = (tab: string) => {
     if (onTabChange) {
       onTabChange(tab);
@@ -16,7 +19,10 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
   };
 
   return (
-    <nav className={`fixed -top-2.5 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible`}>
+    <nav 
+      className={`fixed -top-2.5 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible transition-transform duration-200 ease-out`}
+      style={{ transform: `translateY(${translateY}%)` }}
+    >
       <div className="pl-8 pr-2 py-18 flex items-center justify-end gap-5 max-w-full mx-auto w-full relative">
         {/* Logo Section */}
         <div className="fixed left-0 top-17 z-[61]">
