@@ -114,56 +114,50 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
       {/* Mobile Menu Side Drawer Overlay */}
       {mobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 z-[70] top-0"
+          className="md:hidden fixed inset-0 z-[70] bg-black/50"
           onClick={() => setMobileMenuOpen(false)}
         >
-          {/* Background Overlay */}
-          <div className="absolute inset-0 bg-black/50" />
-          
           {/* Side Drawer Menu */}
-          <div className="absolute left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col gap-6 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="fixed left-0 top-0 bottom-0 w-3/4 bg-red-600 p-4 flex flex-col gap-2 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button 
               onClick={() => setMobileMenuOpen(false)}
-              className="self-end text-white hover:text-gray-200 transition-colors"
+              className="self-end text-white hover:text-gray-200 transition-colors mb-4"
             >
               <X size={32} />
             </button>
 
             {/* Menu Items */}
-            <div className="flex flex-col gap-6 mt-4">
+            <div className="flex flex-col gap-3">
               <button
                 onClick={() => handleTabClick('beranda')}
-                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                className={`text-left text-lg font-bold transition-colors py-2 ${
                   activeTab === 'beranda'
                     ? 'text-white'
                     : 'text-white/80 hover:text-white'
                 }`}
               >
-                Beranda
-                {activeTab === 'beranda' && <span className="text-blue-400">✓</span>}
+                Beranda {activeTab === 'beranda' && <span className="text-blue-400">✓</span>}
               </button>
               <button
                 onClick={() => handleTabClick('struktur-pengurus')}
-                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                className={`text-left text-lg font-bold transition-colors py-2 ${
                   activeTab === 'struktur-pengurus'
                     ? 'text-white'
                     : 'text-white/80 hover:text-white'
                 }`}
               >
-                Struktur Pengurus
-                {activeTab === 'struktur-pengurus' && <span className="text-blue-400">✓</span>}
+                Struktur Pengurus {activeTab === 'struktur-pengurus' && <span className="text-blue-400">✓</span>}
               </button>
               <button
                 onClick={() => handleTabClick('agenda-absensi')}
-                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                className={`text-left text-lg font-bold transition-colors py-2 ${
                   activeTab === 'agenda-absensi'
                     ? 'text-white'
                     : 'text-white/80 hover:text-white'
                 }`}
               >
-                Agenda & Absensi
-                {activeTab === 'agenda-absensi' && <span className="text-blue-400">✓</span>}
+                Agenda & Absensi {activeTab === 'agenda-absensi' && <span className="text-blue-400">✓</span>}
               </button>
             </div>
           </div>
