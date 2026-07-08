@@ -111,57 +111,49 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
         </button>
       </div>
 
-      {/* Mobile Menu Side Drawer Overlay */}
+      {/* Mobile Menu Side Panel */}
       {mobileMenuOpen && (
-        <div 
-          className="md:hidden fixed inset-0 z-[70] bg-black/50"
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          {/* Side Drawer Menu */}
-          <div className="fixed right-0 top-0 bottom-0 w-1/2 md:w-1/3 bg-red-600 pt-10 px-4 pb-4 flex flex-col gap-2 overflow-y-auto md:pt-0" onClick={(e) => e.stopPropagation()}>
-            {/* Close Button */}
-            <button 
-              onClick={() => setMobileMenuOpen(false)}
-              className="self-end text-white hover:text-gray-200 transition-colors mb-4"
-            >
-              <X size={32} />
-            </button>
-
+        <>
+          {/* Overlay */}
+          <div 
+            className="md:hidden fixed inset-0 z-[60] bg-black/30"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          {/* Side Panel Menu - Only in navbar area */}
+          <div className="md:hidden fixed right-0 top-10 w-1/2 bg-red-600 px-3 py-2 flex flex-col gap-0.5 z-[70]" onClick={(e) => e.stopPropagation()}>
             {/* Menu Items */}
-            <div className="flex flex-col gap-3">
-              <button
-                onClick={() => handleTabClick('beranda')}
-                className={`text-left text-lg font-bold transition-colors py-2 ${
-                  activeTab === 'beranda'
-                    ? 'text-white'
-                    : 'text-white/80 hover:text-white'
-                }`}
-              >
-                Beranda {activeTab === 'beranda' && <span className="text-blue-400">✓</span>}
-              </button>
-              <button
-                onClick={() => handleTabClick('struktur-pengurus')}
-                className={`text-left text-lg font-bold transition-colors py-2 ${
-                  activeTab === 'struktur-pengurus'
-                    ? 'text-white'
-                    : 'text-white/80 hover:text-white'
-                }`}
-              >
-                Struktur Pengurus {activeTab === 'struktur-pengurus' && <span className="text-blue-400">✓</span>}
-              </button>
-              <button
-                onClick={() => handleTabClick('agenda-absensi')}
-                className={`text-left text-lg font-bold transition-colors py-2 ${
-                  activeTab === 'agenda-absensi'
-                    ? 'text-white'
-                    : 'text-white/80 hover:text-white'
-                }`}
-              >
-                Agenda & Absensi {activeTab === 'agenda-absensi' && <span className="text-blue-400">✓</span>}
-              </button>
-            </div>
+            <button
+              onClick={() => handleTabClick('beranda')}
+              className={`text-left text-sm font-bold transition-colors py-1.5 px-2 ${
+                activeTab === 'beranda'
+                  ? 'text-white'
+                  : 'text-white/80 hover:text-white'
+              }`}
+            >
+              Beranda {activeTab === 'beranda' && <span className="text-blue-400 ml-1">✓</span>}
+            </button>
+            <button
+              onClick={() => handleTabClick('struktur-pengurus')}
+              className={`text-left text-sm font-bold transition-colors py-1.5 px-2 ${
+                activeTab === 'struktur-pengurus'
+                  ? 'text-white'
+                  : 'text-white/80 hover:text-white'
+              }`}
+            >
+              Struktur Pengurus {activeTab === 'struktur-pengurus' && <span className="text-blue-400 ml-1">✓</span>}
+            </button>
+            <button
+              onClick={() => handleTabClick('agenda-absensi')}
+              className={`text-left text-sm font-bold transition-colors py-1.5 px-2 ${
+                activeTab === 'agenda-absensi'
+                  ? 'text-white'
+                  : 'text-white/80 hover:text-white'
+              }`}
+            >
+              Agenda & Absensi {activeTab === 'agenda-absensi' && <span className="text-blue-400 ml-1">✓</span>}
+            </button>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );
