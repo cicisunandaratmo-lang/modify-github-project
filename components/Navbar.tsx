@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { Search } from 'lucide-react';
-import { useScrollHide } from '@/hooks/useScrollHide';
 
 interface NavbarProps {
   activeTab?: string;
@@ -10,8 +9,6 @@ interface NavbarProps {
 }
 
 export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarProps) {
-  const { isVisible, translateY } = useScrollHide();
-
   const handleTabClick = (tab: string) => {
     if (onTabChange) {
       onTabChange(tab);
@@ -19,23 +16,16 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
   };
 
   return (
-    <nav className={`fixed -top-2.5 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible transition-transform duration-300 ease-out will-change-transform`}
-      style={{
-        transform: `translateY(${translateY}%)`,
-        pointerEvents: isVisible ? 'auto' : 'none',
-        visibility: isVisible ? 'visible' : 'hidden'
-      }}
-    >
+    <nav className={`fixed -top-2.5 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible`}>
       <div className="pl-8 pr-2 py-18 flex items-center justify-end gap-5 max-w-full mx-auto w-full relative">
         {/* Logo Section */}
-        <div className="fixed left-0 top-17 z-[61] will-change-transform">
+        <div className="fixed left-0 top-17 z-[61]">
           <Image
             src="https://res.cloudinary.com/dyromez82/image/upload/v1783281334/Artboard_25_300x_cgubub.png"
             alt="PSI Logo"
             width={350}
             height={350}
             className="object-contain"
-            priority
           />
         </div>
 
