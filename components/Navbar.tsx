@@ -151,7 +151,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
                     : 'text-white/80 hover:text-white'
                 }`}
               >
-                Tentang PSI
+                Struktur Pengurus
                 {activeTab === 'struktur-pengurus' && <span className="text-blue-400">✓</span>}
               </button>
               <button
