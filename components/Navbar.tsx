@@ -114,14 +114,14 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
       {/* Mobile Menu Side Drawer Overlay */}
       {mobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 z-50 top-0"
+          className="md:hidden fixed inset-0 z-[70] top-0"
           onClick={() => setMobileMenuOpen(false)}
         >
           {/* Background Overlay */}
           <div className="absolute inset-0 bg-black/50" />
           
           {/* Side Drawer Menu */}
-          <div className="absolute left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col gap-6 z-51 overflow-y-auto">
+          <div className="absolute left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col gap-6 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button 
               onClick={() => setMobileMenuOpen(false)}
