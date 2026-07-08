@@ -9,22 +9,22 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
   return (
     <>
       {/* Red Banner with Title */}
-      <div className="bg-red-600 text-white min-h-[296px] pb-1 px-0 md:px-2 w-full flex flex-col justify-end items-start relative z-10">
-        <h1 className="text-4xl md:text-5xl font-bold uppercase leading-tight">
+      <div className="bg-red-600 text-white min-h-[200px] sm:min-h-[250px] md:min-h-[296px] pb-1 px-3 sm:px-4 md:px-2 w-full flex flex-col justify-end items-start relative z-10">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase leading-tight">
           {title}
         </h1>
       </div>
 
       {/* Description Section - Only show for beranda */}
       {showDescription && (
-        <div className="bg-white px-4 md:px-8 py-12 md:py-10">
+        <div className="bg-white px-3 sm:px-4 md:px-8 py-8 sm:py-10 md:py-12 md:py-10">
           <div className="max-w-full">
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 md:mb-8">
               Partai Solidaritas Indonesia adalah kekuatan politik baru yang ingin mengembalikan politik ke tempat yang terhormat. 
               PSI lahir dari kesadaran bahwa politik adalah sebuah tugas mulia untuk mewujudkan kebahagiaan bagi semua orang.
             </p>
 
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 md:mb-10">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 md:mb-10">
               Atas dasar itulah kami bertekad mengakhiri sengkarut politik hari ini dengan mengembalikan politik kepada nilainya yang luhur. 
               Kami ingin mendedikasikan kembali politik dengan nilai-nilai kebajikan agar lahir NEGARAWAN yang seluruh pikiran dan tindakannya 
               didaksarkan atas kepentingan yang lebih besar untuk bangsa dan negara Indonesia, bukan sekadang kepentingan pribadi politik jangka pendek.
