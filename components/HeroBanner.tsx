@@ -19,12 +19,12 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
       {showDescription && (
         <div className="bg-white px-4 md:px-8 py-12 md:py-10">
           <div className="max-w-full">
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
               Partai Solidaritas Indonesia adalah kekuatan politik baru yang ingin mengembalikan politik ke tempat yang terhormat. 
               PSI lahir dari kesadaran bahwa politik adalah sebuah tugas mulia untuk mewujudkan kebahagiaan bagi semua orang.
             </p>
 
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8 md:mb-10">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 md:mb-10">
               Atas dasar itulah kami bertekad mengakhiri sengkarut politik hari ini dengan mengembalikan politik kepada nilainya yang luhur. 
               Kami ingin mendedikasikan kembali politik dengan nilai-nilai kebajikan agar lahir NEGARAWAN yang seluruh pikiran dan tindakannya 
               didaksarkan atas kepentingan yang lebih besar untuk bangsa dan negara Indonesia, bukan sekadang kepentingan pribadi politik jangka pendek.
@@ -32,11 +32,11 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
 
             <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-10 md:mt-12 mb-4">Visi, Misi, &amp; DNA PSI</h2>
             
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 md:mb-6">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
               <span className="font-semibold">Visi PSI</span> adalah Indonesia yang berkarakter kerakyatan, berkemanusiaan, berkeragaman, berkeadilan, berkemajuan dan bermartabat.
             </p>
 
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 md:mb-6">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
               <span className="font-semibold">Misi PSI</span>
               <br />
               1. Menggalang kekuatan nasional melalui sebuah kepemimpinan politik yang ideologis, terorganisir, dan terstruktur.
@@ -48,7 +48,7 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
               4. Mendorong martabat Indonesia dalam pergaulan internasional, sesuai prinsip politik bebas aktif dengan melibatkan kondisi geopolitik internasional yang sedang berkembang.
             </p>
 
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 md:mb-6">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
               <span className="font-semibold">DNA PSI</span>
               <br />
               • Kebajikan (anti korupsi)
@@ -56,7 +56,7 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
               • Keragaman (anti intoleransi)
             </p>
 
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 md:mb-6">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
               <span className="font-semibold">Trilogi identitas PSI</span>
               <br />
               1. Menebar kebajikan
@@ -66,7 +66,7 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
               3. Meneguhkan solidaritas
             </p>
 
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
               <span className="font-semibold">Kenapa PSI?</span>
               <br />
               Hasil yang baru tidak mungkin dicapai melalui cara lama. PSI hadir bersama semua yang baru: ide baru, gagasan baru, cara baru, orang baru dan mesin yang baru. Tentu tidak mudah menjalankan hal yang baru. Karenanya KAMI membutuhkan ANDA, terutama anak muda dan perempuan Indonesia yang selama ini merasa jauh dari politik. PSI kami persembahkan untuk ANDA… karena KAMI bukan siapa-siapa TANPA ANDA! PSI sebagai partai baru tidak lagi tersandera dengan kepentingan politik lama, klientalisme, rekam jejak yang buruk, beban sejarah dan citra yang buruk terhadap partai politik sebelumnya. PSI memberikan porsi yang besar pada perempuan, sehingga gerakan politik PSI tidak hanya sekedar memenuhi syarat 30% persen perempuan, tapi juga seluruh keputusan politiknya diambil melalui keterlibatan aktif perempuan di dalamnya. PSI secara konsisten memisahkan antara dua hal yang selama ini kadang menjadi kabur, antara mengurus partai dan mengurus politik. Sejak awal PSI telah memisahkan struktur politik dengan struktur administratifnya. Tidak akan terjadi politisi mengurus administrasi partai lalu menggunakannya untuk kepentingan kekuasaan, karena partai akan diurus oleh orang-orang muda profesional yang paham betul bagaimana mengurus organisasi yang modern, profesional, bersih dan transparan.
