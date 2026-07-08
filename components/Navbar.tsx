@@ -131,10 +131,10 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
             </button>
 
             {/* Menu Items */}
-            <div className="flex flex-col gap-6 mt-4">
+            <div className="flex flex-col gap-4 mt-4">
               <button
                 onClick={() => handleTabClick('beranda')}
-                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                className={`text-left text-xl font-bold transition-colors flex items-center justify-between ${
                   activeTab === 'beranda'
                     ? 'text-white'
                     : 'text-white/80 hover:text-white'
@@ -145,7 +145,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
               </button>
               <button
                 onClick={() => handleTabClick('struktur-pengurus')}
-                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                className={`text-left text-xl font-bold transition-colors flex items-center justify-between ${
                   activeTab === 'struktur-pengurus'
                     ? 'text-white'
                     : 'text-white/80 hover:text-white'
@@ -155,14 +155,29 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
                 {activeTab === 'struktur-pengurus' && <span className="text-blue-400">✓</span>}
               </button>
               <button
+                className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors flex items-center justify-between"
+              >
+                PSI Hadir
+              </button>
+              <button
+                className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors flex items-center justify-between"
+              >
+                PSI Kerja
+              </button>
+              <button
+                className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors flex items-center justify-between"
+              >
+                Kolom
+              </button>
+              <button
                 onClick={() => handleTabClick('agenda-absensi')}
-                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                className={`text-left text-xl font-bold transition-colors flex items-center justify-between ${
                   activeTab === 'agenda-absensi'
                     ? 'text-white'
                     : 'text-white/80 hover:text-white'
                 }`}
               >
-                Agenda & Absensi
+                Dukung
                 {activeTab === 'agenda-absensi' && <span className="text-blue-400">✓</span>}
               </button>
             </div>
