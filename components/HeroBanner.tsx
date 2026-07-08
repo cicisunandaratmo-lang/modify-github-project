@@ -33,14 +33,14 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
             <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-10 md:mt-12 mb-4">Visi, Misi, &amp; DNA PSI</h2>
             
             <div className="mb-4 md:mb-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">Visi PSI</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">Visi PSI</h3>
               <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                 Indonesia yang berkarakter kerakyatan, berkemanusiaan, berkeragaman, berkeadilan, berkemajuan dan bermartabat.
               </p>
             </div>
 
             <div className="mb-4 md:mb-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">Misi PSI</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">Misi PSI</h3>
               <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                 1. Menggalang kekuatan nasional melalui sebuah kepemimpinan politik yang ideologis, terorganisir, dan terstruktur.
                 <br />
@@ -53,7 +53,7 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
             </div>
 
             <div className="mb-4 md:mb-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">DNA PSI</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">DNA PSI</h3>
               <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                 • Kebajikan (anti korupsi)
                 <br />
@@ -62,7 +62,7 @@ export default function HeroBanner({ title, showDescription = false }: HeroBanne
             </div>
 
             <div className="mb-4 md:mb-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">Trilogi identitas PSI</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">Trilogi identitas PSI</h3>
               <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                 1. Menebar kebajikan
                 <br />
