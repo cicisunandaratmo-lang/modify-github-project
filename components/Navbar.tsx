@@ -111,47 +111,60 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
         </button>
       </div>
 
-      {/* Mobile Menu Side Panel */}
+      {/* Mobile Menu Full Height Side Drawer */}
       {mobileMenuOpen && (
         <>
           {/* Overlay */}
           <div 
-            className="md:hidden fixed inset-0 z-[60] bg-black/30"
+            className="md:hidden fixed inset-0 z-[60] bg-black/40"
             onClick={() => setMobileMenuOpen(false)}
           />
-          {/* Side Panel Menu - Only in navbar area */}
-          <div className="md:hidden fixed right-0 top-10 w-1/2 bg-red-600 px-3 py-2 flex flex-col gap-0.5 z-[70]" onClick={(e) => e.stopPropagation()}>
+          {/* Full Height Side Drawer - Left side */}
+          <div className="md:hidden fixed left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col z-[70] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            {/* Close Button */}
+            <button 
+              onClick={() => setMobileMenuOpen(false)}
+              className="self-end text-white hover:text-gray-200 transition-colors mb-6"
+            >
+              <X size={36} />
+            </button>
+
             {/* Menu Items */}
-            <button
-              onClick={() => handleTabClick('beranda')}
-              className={`text-left text-sm font-bold transition-colors py-1.5 px-2 ${
-                activeTab === 'beranda'
-                  ? 'text-white'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              Beranda {activeTab === 'beranda' && <span className="text-blue-400 ml-1">✓</span>}
-            </button>
-            <button
-              onClick={() => handleTabClick('struktur-pengurus')}
-              className={`text-left text-sm font-bold transition-colors py-1.5 px-2 ${
-                activeTab === 'struktur-pengurus'
-                  ? 'text-white'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              Struktur Pengurus {activeTab === 'struktur-pengurus' && <span className="text-blue-400 ml-1">✓</span>}
-            </button>
-            <button
-              onClick={() => handleTabClick('agenda-absensi')}
-              className={`text-left text-sm font-bold transition-colors py-1.5 px-2 ${
-                activeTab === 'agenda-absensi'
-                  ? 'text-white'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              Agenda & Absensi {activeTab === 'agenda-absensi' && <span className="text-blue-400 ml-1">✓</span>}
-            </button>
+            <div className="flex flex-col gap-6">
+              <button
+                onClick={() => handleTabClick('beranda')}
+                className="text-left text-2xl font-bold text-white hover:text-gray-100 transition-colors flex items-center gap-3"
+              >
+                Beranda {activeTab === 'beranda' && <span className="text-blue-400">✓</span>}
+              </button>
+              <button
+                onClick={() => handleTabClick('struktur-pengurus')}
+                className="text-left text-2xl font-bold text-white hover:text-gray-100 transition-colors flex items-center gap-3"
+              >
+                Tentang PSI {activeTab === 'struktur-pengurus' && <span className="text-blue-400">✓</span>}
+              </button>
+              <button
+                className="text-left text-2xl font-bold text-white/80 hover:text-white transition-colors"
+              >
+                PSI Hadir
+              </button>
+              <button
+                className="text-left text-2xl font-bold text-white/80 hover:text-white transition-colors"
+              >
+                PSI Kerja
+              </button>
+              <button
+                className="text-left text-2xl font-bold text-white/80 hover:text-white transition-colors"
+              >
+                Kolom
+              </button>
+              <button
+                onClick={() => handleTabClick('agenda-absensi')}
+                className="text-left text-2xl font-bold text-white hover:text-gray-100 transition-colors flex items-center gap-3"
+              >
+                Dukung {activeTab === 'agenda-absensi' && <span className="text-blue-400">✓</span>}
+              </button>
+            </div>
           </div>
         </>
       )}
