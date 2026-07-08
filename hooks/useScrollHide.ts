@@ -3,56 +3,45 @@ import { useState, useEffect, useRef } from 'react';
 export function useScrollHide() {
   const [translateY, setTranslateY] = useState(0);
   const containerRef = useRef<HTMLElement | null>(null);
-  const lastScrollRef = useRef(0);
-  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    // Cari main element yang di-scroll
     const mainElement = document.querySelector('main');
-    if (!mainElement) return;
+    if (!mainElement) {
+      return;
+    }
 
     containerRef.current = mainElement;
-    const hideStartThreshold = 30;  // Mulai hilang setelah scroll 30px
-    const hideEndThreshold = 150;   // Hilang total setelah scroll 150px
 
     const handleScroll = () => {
       if (!containerRef.current) return;
       
-      // Cancel previous RAF untuk avoid multiple updates
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
+      const currentScrollY = containerRef.current.scrollTop;
       
-      // Gunakan RAF tanpa delay untuk responsive immediate update
-      rafRef.current = requestAnimationFrame(() => {
-        const currentScrollY = containerRef.current?.scrollTop || 0;
+      // Threshold: navbar baru mulai hilang setelah scroll 30px
+      // Kemudian hilang total setelah scroll 150px
+      const hideStartThreshold = 30;
+      const hideEndThreshold = 150;
+      
+      if (currentScrollY < hideStartThreshold) {
+        // Belum scroll cukup, navbar tetap terlihat
+        setTranslateY(0);
+      } else {
+        // Mulai hitung pergerakan dari threshold ke end
+        const scrollDistance = hideEndThreshold - hideStartThreshold;
+        const scrollProgress = currentScrollY - hideStartThreshold;
+        const calculatedTranslate = -(scrollProgress / scrollDistance) * 100;
+        const finalTranslate = Math.max(-100, Math.min(0, calculatedTranslate));
         
-        // Jika belum mencapai threshold awal, navbar fully visible
-        if (currentScrollY < hideStartThreshold) {
-          setTranslateY(0);
-        } 
-        // Jika sudah melewati threshold akhir, navbar fully hidden
-        else if (currentScrollY >= hideEndThreshold) {
-          setTranslateY(-100);
-        } 
-        // Antara threshold awal dan akhir: hitung smooth gradient
-        else {
-          const scrollRange = hideEndThreshold - hideStartThreshold;
-          const scrollProgress = currentScrollY - hideStartThreshold;
-          const translatePercentage = -(scrollProgress / scrollRange) * 100;
-          setTranslateY(Math.round(translatePercentage));
-        }
-        
-        lastScrollRef.current = currentScrollY;
-      });
+        setTranslateY(finalTranslate);
+      }
     };
 
+    // Call handler saat mount untuk set initial state
     handleScroll();
-    mainElement.addEventListener('scroll', handleScroll, { passive: true });
 
-    return () => {
-      mainElement.removeEventListener('scroll', handleScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
+    mainElement.addEventListener('scroll', handleScroll);
+    return () => mainElement.removeEventListener('scroll', handleScroll);
   }, []);
 
   return translateY;
