@@ -27,7 +27,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
 
   return (
     <nav 
-      className={`fixed -top-2.5 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible transition-transform duration-200 ease-out`}
+      className={`fixed top-10 left-0 right-0 z-[50] bg-white border-b border-gray-200 overflow-visible transition-transform duration-200 ease-out md:top-0`}
       style={{ transform: `translateY(${translateY}%)` }}
     >
       {/* Desktop Navbar */}
@@ -35,7 +35,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
         {/* Logo Section */}
         <button 
           onClick={handleLogoClick}
-          className="fixed left-0 top-17 z-[61] cursor-pointer hover:opacity-80 transition-opacity"
+          className="fixed left-0 top-[60px] z-[51] cursor-pointer hover:opacity-80 transition-opacity md:top-17"
         >
           <Image
             src="https://res.cloudinary.com/dyromez82/image/upload/v1783281334/Artboard_25_300x_cgubub.png"
@@ -114,14 +114,14 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
       {/* Mobile Menu Side Drawer Overlay */}
       {mobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 z-50 top-0"
+          className="md:hidden fixed inset-0 z-[70] top-0"
           onClick={() => setMobileMenuOpen(false)}
         >
           {/* Background Overlay */}
           <div className="absolute inset-0 bg-black/50" />
           
           {/* Side Drawer Menu */}
-          <div className="absolute left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col gap-6 z-51 overflow-y-auto">
+          <div className="absolute left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col gap-6 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button 
               onClick={() => setMobileMenuOpen(false)}
