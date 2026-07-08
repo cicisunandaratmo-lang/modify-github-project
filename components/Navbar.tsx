@@ -114,13 +114,13 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
       {/* Mobile Menu Full Height Side Drawer */}
       {mobileMenuOpen && (
         <>
-          {/* Overlay */}
+          {/* Overlay - Full screen */}
           <div 
-            className="md:hidden fixed inset-0 z-[9999] bg-black/40"
+            className="md:hidden fixed top-0 left-0 right-0 bottom-0 z-[9999] bg-black/40"
             onClick={() => setMobileMenuOpen(false)}
           />
-          {/* Full Height Side Drawer - Left side */}
-          <div className="md:hidden fixed left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col z-[10000] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          {/* Full Height Side Drawer - Left side only */}
+          <div className="md:hidden fixed left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col z-[10001] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button 
               onClick={() => setMobileMenuOpen(false)}
