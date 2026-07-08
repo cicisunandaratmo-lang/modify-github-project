@@ -111,39 +111,62 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Side Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 px-4 py-4 flex flex-col gap-4">
-          <button
-            onClick={() => handleTabClick('beranda')}
-            className={`text-left font-semibold py-2 transition-colors ${
-              activeTab === 'beranda'
-                ? 'text-black border-l-4 border-black pl-2'
-                : 'text-red-600 border-l-4 border-transparent pl-2'
-            }`}
-          >
-            Beranda
-          </button>
-          <button
-            onClick={() => handleTabClick('struktur-pengurus')}
-            className={`text-left font-semibold py-2 transition-colors ${
-              activeTab === 'struktur-pengurus'
-                ? 'text-black border-l-4 border-black pl-2'
-                : 'text-red-600 border-l-4 border-transparent pl-2'
-            }`}
-          >
-            Struktur Pengurus
-          </button>
-          <button
-            onClick={() => handleTabClick('agenda-absensi')}
-            className={`text-left font-semibold py-2 transition-colors ${
-              activeTab === 'agenda-absensi'
-                ? 'text-black border-l-4 border-black pl-2'
-                : 'text-red-600 border-l-4 border-transparent pl-2'
-            }`}
-          >
-            Agenda & Absensi
-          </button>
+        <div 
+          className="md:hidden fixed inset-0 z-50 top-0"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          {/* Background Overlay */}
+          <div className="absolute inset-0 bg-black/50" />
+          
+          {/* Side Drawer Menu */}
+          <div className="absolute left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col gap-6 z-51 overflow-y-auto">
+            {/* Close Button */}
+            <button 
+              onClick={() => setMobileMenuOpen(false)}
+              className="self-end text-white hover:text-gray-200 transition-colors"
+            >
+              <X size={32} />
+            </button>
+
+            {/* Menu Items */}
+            <div className="flex flex-col gap-6 mt-4">
+              <button
+                onClick={() => handleTabClick('beranda')}
+                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                  activeTab === 'beranda'
+                    ? 'text-white'
+                    : 'text-white/80 hover:text-white'
+                }`}
+              >
+                Beranda
+                {activeTab === 'beranda' && <span className="text-blue-400">✓</span>}
+              </button>
+              <button
+                onClick={() => handleTabClick('struktur-pengurus')}
+                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                  activeTab === 'struktur-pengurus'
+                    ? 'text-white'
+                    : 'text-white/80 hover:text-white'
+                }`}
+              >
+                Tentang PSI
+                {activeTab === 'struktur-pengurus' && <span className="text-blue-400">✓</span>}
+              </button>
+              <button
+                onClick={() => handleTabClick('agenda-absensi')}
+                className={`text-left text-2xl font-bold transition-colors flex items-center gap-3 ${
+                  activeTab === 'agenda-absensi'
+                    ? 'text-white'
+                    : 'text-white/80 hover:text-white'
+                }`}
+              >
+                Agenda & Absensi
+                {activeTab === 'agenda-absensi' && <span className="text-blue-400">✓</span>}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </nav>
