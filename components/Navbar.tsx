@@ -120,17 +120,17 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
             onClick={() => setMobileMenuOpen(false)}
           />
           {/* Full Height Side Drawer - Left side only */}
-          <div className="md:hidden fixed left-0 top-0 bottom-0 w-3/4 bg-red-600 p-6 flex flex-col z-[10001] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="md:hidden fixed left-0 top-0 bottom-0 w-3/4 bg-red-600 flex flex-col z-[10001] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button 
               onClick={() => setMobileMenuOpen(false)}
-              className="self-end text-white hover:text-gray-200 transition-colors mb-6"
+              className="self-end text-white hover:text-gray-200 transition-colors p-6 pb-2"
             >
               <X size={36} />
             </button>
 
             {/* Menu Items */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 px-6 py-4">
               <button
                 onClick={() => handleTabClick('beranda')}
                 className="text-left text-2xl font-bold text-white hover:text-gray-100 transition-colors flex items-center gap-3"
