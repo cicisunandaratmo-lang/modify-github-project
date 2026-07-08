@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 
 export function useScrollHide() {
+  const [isVisible, setIsVisible] = useState(true);
   const [translateY, setTranslateY] = useState(0);
   const containerRef = useRef<HTMLElement | null>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastScrollRef = useRef(0);
 
   useEffect(() => {
     // Cari main element yang di-scroll
@@ -17,32 +20,40 @@ export function useScrollHide() {
       if (!containerRef.current) return;
       
       const currentScrollY = containerRef.current.scrollTop;
+      const hideThreshold = 30;
       
-      // Threshold: navbar baru mulai hilang setelah scroll 30px
-      // Kemudian hilang total setelah scroll 150px
-      const hideStartThreshold = 30;
-      const hideEndThreshold = 150;
-      
-      if (currentScrollY < hideStartThreshold) {
-        // Belum scroll cukup, navbar tetap terlihat
+      // Jika scroll kembali ke atas dengan cepat, langsung tampilkan navbar
+      if (currentScrollY < hideThreshold) {
+        setIsVisible(true);
         setTranslateY(0);
-      } else {
-        // Mulai hitung pergerakan dari threshold ke end
-        const scrollDistance = hideEndThreshold - hideStartThreshold;
-        const scrollProgress = currentScrollY - hideStartThreshold;
-        const calculatedTranslate = -(scrollProgress / scrollDistance) * 100;
-        const finalTranslate = Math.max(-100, Math.min(0, calculatedTranslate));
-        
-        setTranslateY(finalTranslate);
+        lastScrollRef.current = currentScrollY;
+        return;
       }
+      
+      // Clear previous timeout untuk menghindari banyak state update
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      
+      // Use requestAnimationFrame untuk smooth scroll handling
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsVisible(false);
+        setTranslateY(-100);
+        lastScrollRef.current = currentScrollY;
+      }, 50);
     };
 
     // Call handler saat mount untuk set initial state
     handleScroll();
 
-    mainElement.addEventListener('scroll', handleScroll);
-    return () => mainElement.removeEventListener('scroll', handleScroll);
+    mainElement.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      mainElement.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
   }, []);
 
-  return translateY;
+  return { isVisible, translateY };
 }
