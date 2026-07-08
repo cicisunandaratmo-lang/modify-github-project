@@ -118,7 +118,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
           onClick={() => setMobileMenuOpen(false)}
         >
           {/* Side Drawer Menu */}
-          <div className="fixed left-0 top-0 bottom-0 w-3/4 bg-red-600 p-4 flex flex-col gap-2 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="fixed right-0 top-0 bottom-0 w-1/2 bg-red-600 p-4 flex flex-col gap-2 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button 
               onClick={() => setMobileMenuOpen(false)}
