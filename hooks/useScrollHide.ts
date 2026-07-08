@@ -11,7 +11,8 @@ export function useScrollHide() {
     if (!mainElement) return;
 
     containerRef.current = mainElement;
-    const hideThreshold = 30;
+    const hideStartThreshold = 30;  // Mulai hilang setelah scroll 30px
+    const hideEndThreshold = 150;   // Hilang total setelah scroll 150px
 
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -24,20 +25,21 @@ export function useScrollHide() {
       // Gunakan RAF tanpa delay untuk responsive immediate update
       rafRef.current = requestAnimationFrame(() => {
         const currentScrollY = containerRef.current?.scrollTop || 0;
-        const lastScroll = lastScrollRef.current;
-        const isScrollingDown = currentScrollY > lastScroll;
         
-        // Navbar visible jika scroll ke atas dari threshold
-        if (currentScrollY < hideThreshold) {
+        // Jika belum mencapai threshold awal, navbar fully visible
+        if (currentScrollY < hideStartThreshold) {
           setTranslateY(0);
         } 
-        // Navbar hidden jika scroll down
-        else if (isScrollingDown) {
+        // Jika sudah melewati threshold akhir, navbar fully hidden
+        else if (currentScrollY >= hideEndThreshold) {
           setTranslateY(-100);
         } 
-        // Navbar visible jika scroll up (lebih responsif)
+        // Antara threshold awal dan akhir: hitung smooth gradient
         else {
-          setTranslateY(0);
+          const scrollRange = hideEndThreshold - hideStartThreshold;
+          const scrollProgress = currentScrollY - hideStartThreshold;
+          const translatePercentage = -(scrollProgress / scrollRange) * 100;
+          setTranslateY(Math.round(translatePercentage));
         }
         
         lastScrollRef.current = currentScrollY;
