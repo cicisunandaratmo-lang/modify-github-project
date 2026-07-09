@@ -27,7 +27,7 @@ export default function Home() {
       </div>
 
       {/* Content Area - Full viewport scrollable by tab */}
-      <main className="h-full overflow-y-auto pt-10 md:pt-0">
+      <main className="h-full overflow-y-auto">
         {/* Beranda Tab */}
         {activeTab === 'beranda' && (
           <HeroBanner title="Tentang PSI" showDescription={true} />

@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="id">
-      <body className={`${geist.className} antialiased bg-white`}>
+    <html lang="id" className="h-screen">
+      <body className={`${geist.className} antialiased bg-white h-screen overflow-hidden`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

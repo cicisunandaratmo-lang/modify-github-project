@@ -27,7 +27,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
 
   return (
     <nav 
-      className={`fixed top-10 left-0 right-0 z-[50] bg-white border-b border-gray-200 overflow-visible transition-transform duration-200 ease-out md:top-0`}
+      className={`fixed -top-2.5 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible transition-transform duration-200 ease-out`}
       style={{ transform: `translateY(${translateY}%)` }}
     >
       {/* Desktop Navbar */}
@@ -35,7 +35,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
         {/* Logo Section */}
         <button 
           onClick={handleLogoClick}
-          className="fixed left-0 top-[60px] z-[51] cursor-pointer hover:opacity-80 transition-opacity md:top-17"
+          className="fixed left-0 top-17 z-[61] cursor-pointer hover:opacity-80 transition-opacity"
         >
           <Image
             src="https://res.cloudinary.com/dyromez82/image/upload/v1783281334/Artboard_25_300x_cgubub.png"
@@ -111,62 +111,40 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
         </button>
       </div>
 
-      {/* Mobile Menu Full Height Side Drawer */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <>
-          {/* Overlay - Full screen */}
-          <div 
-            className="md:hidden fixed top-0 left-0 right-0 bottom-0 z-[9999] bg-black/40"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          {/* Full Height Side Drawer - Left side only */}
-          <div className="md:hidden fixed left-0 top-0 bottom-0 w-3/4 bg-red-600 flex flex-col z-[10001] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            {/* Close Button */}
-            <button 
-              onClick={() => setMobileMenuOpen(false)}
-              className="self-end text-white hover:text-gray-200 transition-colors p-6 pb-2"
-            >
-              <X size={36} />
-            </button>
-
-            {/* Menu Items */}
-            <div className="flex flex-col gap-6 px-6 py-4">
-              <button
-                onClick={() => handleTabClick('beranda')}
-                className="text-left text-2xl font-bold text-white hover:text-gray-100 transition-colors flex items-center gap-3"
-              >
-                Beranda {activeTab === 'beranda' && <span className="text-blue-400">✓</span>}
-              </button>
-              <button
-                onClick={() => handleTabClick('struktur-pengurus')}
-                className="text-left text-2xl font-bold text-white hover:text-gray-100 transition-colors flex items-center gap-3"
-              >
-                Tentang PSI {activeTab === 'struktur-pengurus' && <span className="text-blue-400">✓</span>}
-              </button>
-              <button
-                className="text-left text-2xl font-bold text-white/80 hover:text-white transition-colors"
-              >
-                PSI Hadir
-              </button>
-              <button
-                className="text-left text-2xl font-bold text-white/80 hover:text-white transition-colors"
-              >
-                PSI Kerja
-              </button>
-              <button
-                className="text-left text-2xl font-bold text-white/80 hover:text-white transition-colors"
-              >
-                Kolom
-              </button>
-              <button
-                onClick={() => handleTabClick('agenda-absensi')}
-                className="text-left text-2xl font-bold text-white hover:text-gray-100 transition-colors flex items-center gap-3"
-              >
-                Dukung {activeTab === 'agenda-absensi' && <span className="text-blue-400">✓</span>}
-              </button>
-            </div>
-          </div>
-        </>
+        <div className="md:hidden bg-white border-t border-gray-200 px-4 py-4 flex flex-col gap-4">
+          <button
+            onClick={() => handleTabClick('beranda')}
+            className={`text-left font-semibold py-2 transition-colors ${
+              activeTab === 'beranda'
+                ? 'text-black border-l-4 border-black pl-2'
+                : 'text-red-600 border-l-4 border-transparent pl-2'
+            }`}
+          >
+            Beranda
+          </button>
+          <button
+            onClick={() => handleTabClick('struktur-pengurus')}
+            className={`text-left font-semibold py-2 transition-colors ${
+              activeTab === 'struktur-pengurus'
+                ? 'text-black border-l-4 border-black pl-2'
+                : 'text-red-600 border-l-4 border-transparent pl-2'
+            }`}
+          >
+            Struktur Pengurus
+          </button>
+          <button
+            onClick={() => handleTabClick('agenda-absensi')}
+            className={`text-left font-semibold py-2 transition-colors ${
+              activeTab === 'agenda-absensi'
+                ? 'text-black border-l-4 border-black pl-2'
+                : 'text-red-600 border-l-4 border-transparent pl-2'
+            }`}
+          >
+            Agenda & Absensi
+          </button>
+        </div>
       )}
     </nav>
   );
