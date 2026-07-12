@@ -17,17 +17,23 @@ export default function Home() {
   const [selectedMember, setSelectedMember] = useState<any>(null);
 
   return (
-    <div className="h-screen overflow-hidden bg-white relative">
-      {/* Header - Floating (Does not take space) */}
-      <div className="absolute top-0 left-0 right-0 z-40 pointer-events-none">
-        <div className="pointer-events-auto">
+    <div className="min-h-screen bg-white flex flex-col overflow-x-hidden md:h-screen md:overflow-hidden">
+      {/* Header - Desktop floating, Mobile normal flow */}
+      <div className="hidden md:absolute md:top-0 md:left-0 md:right-0 md:z-40 md:pointer-events-none">
+        <div className="md:pointer-events-auto">
           <UtilityBar />
           <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
         </div>
       </div>
 
+      {/* Mobile Header - Stacked vertically */}
+      <div className="md:hidden flex flex-col">
+        <UtilityBar />
+        <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
+      </div>
+
       {/* Content Area - Full viewport scrollable by tab */}
-      <main className="h-full overflow-y-auto">
+      <main className="flex-1 overflow-y-auto md:h-full md:pt-40">
         {/* Beranda Tab */}
         {activeTab === 'beranda' && (
           <HeroBanner title="Tentang PSI" showDescription={true} />
