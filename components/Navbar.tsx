@@ -27,75 +27,6 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
 
   return (
     <>
-      {/* Backdrop Overlay */}
-      {mobileMenuOpen && (
-        <div 
-          className="md:hidden fixed inset-0 bg-black/50 z-40"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden fixed top-0 left-0 h-screen w-[75vw] bg-red-600 z-50 flex flex-col">
-          {/* Close Button - Top Right */}
-          <button 
-            onClick={() => setMobileMenuOpen(false)}
-            className="self-end p-6 text-white hover:text-gray-200 transition-colors"
-          >
-            <X size={32} />
-          </button>
-
-          {/* Menu Items - Vertical */}
-          <div className="flex flex-col gap-6 px-6 py-4">
-            <button
-              onClick={() => handleTabClick('beranda')}
-              className={`text-left text-xl font-bold transition-colors ${
-                activeTab === 'beranda'
-                  ? 'text-white'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              Beranda {activeTab === 'beranda' && <span className="text-blue-400 ml-2">✓</span>}
-            </button>
-            <button
-              onClick={() => handleTabClick('struktur-pengurus')}
-              className={`text-left text-xl font-bold transition-colors ${
-                activeTab === 'struktur-pengurus'
-                  ? 'text-white'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              Tentang PSI {activeTab === 'struktur-pengurus' && <span className="text-blue-400 ml-2">✓</span>}
-            </button>
-            <button
-              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
-            >
-              PSI Hadir
-            </button>
-            <button
-              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
-            >
-              PSI Kerja
-            </button>
-            <button
-              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
-            >
-              Kolom
-            </button>
-            <button
-              onClick={() => handleTabClick('agenda-absensi')}
-              className={`text-left text-xl font-bold transition-colors ${
-                activeTab === 'agenda-absensi'
-                  ? 'text-white'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              Dukung {activeTab === 'agenda-absensi' && <span className="text-blue-400 ml-2">✓</span>}
-            </button>
-          </div>
-        </div>
-      )}
 
       <nav className={`fixed -top-2.5 left-0 right-0 z-[60] bg-white border-b border-gray-200 overflow-visible transition-transform duration-200 ease-out`}
         style={{ transform: `translateY(${translateY}%)` }}
@@ -186,6 +117,76 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
           </div>
         </div>
       </nav>
+
+      {/* Backdrop Overlay - Paling Luar */}
+      {mobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/50 z-[9998]"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Drawer - Paling Luar & Paling Tinggi */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed top-0 left-0 h-screen w-[75vw] bg-red-600 z-[9999] flex flex-col">
+          {/* Close Button - Top Right */}
+          <button 
+            onClick={() => setMobileMenuOpen(false)}
+            className="self-end p-6 text-white hover:text-gray-200 transition-colors"
+          >
+            <X size={32} />
+          </button>
+
+          {/* Menu Items - Vertical */}
+          <div className="flex flex-col gap-6 px-6 py-4">
+            <button
+              onClick={() => handleTabClick('beranda')}
+              className={`text-left text-xl font-bold transition-colors ${
+                activeTab === 'beranda'
+                  ? 'text-white'
+                  : 'text-white/80 hover:text-white'
+              }`}
+            >
+              Beranda {activeTab === 'beranda' && <span className="text-blue-400 ml-2">✓</span>}
+            </button>
+            <button
+              onClick={() => handleTabClick('struktur-pengurus')}
+              className={`text-left text-xl font-bold transition-colors ${
+                activeTab === 'struktur-pengurus'
+                  ? 'text-white'
+                  : 'text-white/80 hover:text-white'
+              }`}
+            >
+              Tentang PSI {activeTab === 'struktur-pengurus' && <span className="text-blue-400 ml-2">✓</span>}
+            </button>
+            <button
+              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
+            >
+              PSI Hadir
+            </button>
+            <button
+              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
+            >
+              PSI Kerja
+            </button>
+            <button
+              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
+            >
+              Kolom
+            </button>
+            <button
+              onClick={() => handleTabClick('agenda-absensi')}
+              className={`text-left text-xl font-bold transition-colors ${
+                activeTab === 'agenda-absensi'
+                  ? 'text-white'
+                  : 'text-white/80 hover:text-white'
+              }`}
+            >
+              Dukung {activeTab === 'agenda-absensi' && <span className="text-blue-400 ml-2">✓</span>}
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
