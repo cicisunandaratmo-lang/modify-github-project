@@ -157,7 +157,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
                   : 'text-white/80 hover:text-white'
               }`}
             >
-              Struktur Pengurus {activeTab === 'struktur-pengurus' && <span className="text-blue-400 ml-2">✓</span>}
+              Struktur Pengurus
             </button>
             <button
               onClick={() => handleTabClick('agenda-absensi')}
@@ -167,7 +167,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
                   : 'text-white/80 hover:text-white'
               }`}
             >
-              Agenda & Absensi {activeTab === 'agenda-absensi' && <span className="text-blue-400 ml-2">✓</span>}
+              Agenda & Absensi
             </button>
           </div>
         </div>
