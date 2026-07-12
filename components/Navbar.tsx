@@ -157,22 +157,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
                   : 'text-white/80 hover:text-white'
               }`}
             >
-              Tentang PSI {activeTab === 'struktur-pengurus' && <span className="text-blue-400 ml-2">✓</span>}
-            </button>
-            <button
-              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
-            >
-              PSI Hadir
-            </button>
-            <button
-              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
-            >
-              PSI Kerja
-            </button>
-            <button
-              className="text-left text-xl font-bold text-white/80 hover:text-white transition-colors"
-            >
-              Kolom
+              Struktur Pengurus {activeTab === 'struktur-pengurus' && <span className="text-blue-400 ml-2">✓</span>}
             </button>
             <button
               onClick={() => handleTabClick('agenda-absensi')}
@@ -182,7 +167,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
                   : 'text-white/80 hover:text-white'
               }`}
             >
-              Dukung {activeTab === 'agenda-absensi' && <span className="text-blue-400 ml-2">✓</span>}
+              Agenda & Absensi {activeTab === 'agenda-absensi' && <span className="text-blue-400 ml-2">✓</span>}
             </button>
           </div>
         </div>
