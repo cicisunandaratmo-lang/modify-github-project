@@ -147,7 +147,7 @@ export default function Navbar({ activeTab = 'beranda', onTabChange }: NavbarPro
                   : 'text-white/80 hover:text-white'
               }`}
             >
-              Beranda {activeTab === 'beranda' && <span className="text-blue-400 ml-2">✓</span>}
+              Beranda
             </button>
             <button
               onClick={() => handleTabClick('struktur-pengurus')}
